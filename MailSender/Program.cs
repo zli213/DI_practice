@@ -10,7 +10,9 @@ class Program
     static void Main(string[] args)
     {
         ServiceCollection services = new ServiceCollection();
-        services.AddScoped<IConfigService, EnvVarConfigService>();
+        // services.AddScoped<IConfigService, EnvVarConfigService>();
+        // services.AddScoped<IConfigService>(provider => new IniFileConfigService { FilePath = "mail.ini" });
+        services.AddScoped(typeof(IConfigService), s => new IniFileConfigService { FilePath = "mail.ini" });
         services.AddScoped<IMailService, MailService>();
         services.AddScoped<ILogProvider, ConsoleLogProvider>();
         using (var sp = services.BuildServiceProvider())

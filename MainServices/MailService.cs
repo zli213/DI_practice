@@ -20,7 +20,7 @@ namespace MailServices
 			string smtpServer = this.config.GetValue("SmtpServer");
             string userName = this.config.GetValue("UserName");
             string password = this.config.GetValue("Password");
-			Console.WriteLine($"Email Server address{smtpServer}, userName: {userName}, password: {password}");
+			Console.WriteLine($"Config content: Email Server address: {smtpServer}, userName: {userName}, password: {password}");
             Console.WriteLine($"Title: {title} {to}, content body is: {body}, has been sent!");
 			this.log.LogInfo("Done!");
         }
